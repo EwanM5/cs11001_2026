@@ -1,0 +1,135 @@
+/* 1. Global Styles & Typography */
+/* Band 2: Typography Improvements - Using refined weights and secondary font pairings */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --cyan-accent: #00ffff;
+    --green-accent: #39ff14;
+    --deep-black: #0a0a0a;
+    --soft-grey: #6c757d;
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+    --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--deep-black);
+    line-height: 1.6;
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased; /* Band 2: Refined text rendering */
+}
+
+/* 2. Navigation & Mobile Menu Fixes */
+.navbar {
+    transition: var(--transition-smooth);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    background-color: #ffffff !important;
+}
+
+.navbar-brand {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    letter-spacing: -1px; /* Band 2: Custom kerning for logo */
+}
+
+/* Band 2: Refined Layout Control - Specific mobile menu behavior */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: #ffffff;
+        padding: 1.5rem;
+        margin-top: 1rem;
+        border-radius: 12px;
+        box-shadow: var(--glass-shadow);
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .nav-item {
+        border-bottom: 1px solid #f8f9fa;
+        width: 100%;
+        text-align: left;
+    }
+}
+
+.nav-link {
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.8rem 1.2rem !important;
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover {
+    color: var(--cyan-accent) !important;
+}
+
+/* 3. Hero Section */
+.hero-section {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    background: radial-gradient(circle at top right, #f8fafc, #ffffff);
+    padding: 100px 0;
+}
+
+.text-gradient-custom {
+    background: linear-gradient(135deg, #00ced1 0%, #2ebf2e 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+h1.display-1, h1.display-2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    letter-spacing: -2.5px;
+    line-height: 1.05;
+}
+
+/* 4. Portfolio Cards - Band 2: Consistent Component Design */
+.card {
+    border: none;
+    transition: var(--transition-smooth);
+    border-radius: 16px;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Band 2: Layout interaction */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.card-img-top {
+    transition: transform 0.6s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+/* 5. Buttons & Interaction */
+.btn {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    padding: 1rem 2.2rem;
+    border-radius: 100px; /* Modern pill shape */
+    transition: var(--transition-smooth);
+}
+
+.btn-dark {
+    background-color: var(--deep-black);
+    border: none;
+}
+
+.btn-dark:hover {
+    background-color: var(--cyan-accent);
+    color: var(--deep-black);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 255, 255, 0.25);
+}
+
+
+/* 6. Utility Classes */
+.bg-soft-cyan { background-color: rgba(0, 255, 255, 0.1); }
+.tracking-tight { letter-spacing: -0.05em; }
