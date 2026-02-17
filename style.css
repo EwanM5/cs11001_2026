@@ -1,59 +1,60 @@
-/* 1. Global Styles & Typography */
-/* Band 2: Typography Improvements - Using refined weights and secondary font pairings */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Inter:wght@400;500;600&display=swap');
+/* Master Stylesheet: Ewan's Handmade Gallery 
+    Theme: Analog Soul x Digital Vibrancy
+    Colors: Cyan, Green, Black, Grey
+*/
+
+/* 1. GLOBAL CONFIG & LIBRARIES */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 
 :root {
-    --cyan-accent: #00ffff;
-    --green-accent: #39ff14;
+    /* Your Core Palette */
+    --cyan-accent: #00ced1;
+    --green-accent: #2ebf2e;
     --deep-black: #0a0a0a;
-    --soft-grey: #6c757d;
+    --soft-grey: #636e72;
+    --paper-white: #fafafa;
+    
+    /* UI Polish */
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
-    --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    --transition-smooth: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
+/* 2. BASE TYPOGRAPHY (Handmade Focus) */
 body {
-    font-family: 'Inter', sans-serif;
+    /* System Serif for that professional gallery catalog feel */
+    font-family: -apple-system, "Segoe UI", "Georgia", serif;
     color: var(--deep-black);
-    line-height: 1.6;
-    background-color: #ffffff;
-    -webkit-font-smoothing: antialiased; /* Band 2: Refined text rendering */
+    background-color: var(--paper-white);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
-/* 2. Navigation & Mobile Menu Fixes */
+h1, h2, .navbar-brand {
+    font-family: "Georgia", Times, serif;
+    font-weight: 800;
+}
+
+/* 3. PROFESSIONAL NAVIGATION */
 .navbar {
     transition: var(--transition-smooth);
     border-bottom: 1px solid rgba(0,0,0,0.05);
-    background-color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px);
+    z-index: 1050;
 }
 
 .navbar-brand {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 800;
-    letter-spacing: -1px; /* Band 2: Custom kerning for logo */
-}
-
-/* Band 2: Refined Layout Control - Specific mobile menu behavior */
-@media (max-width: 991px) {
-    .navbar-collapse {
-        background-color: #ffffff;
-        padding: 1.5rem;
-        margin-top: 1rem;
-        border-radius: 12px;
-        box-shadow: var(--glass-shadow);
-        border: 1px solid rgba(0,0,0,0.05);
-    }
-    
-    .nav-item {
-        border-bottom: 1px solid #f8f9fa;
-        width: 100%;
-        text-align: left;
-    }
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--deep-black) !important;
 }
 
 .nav-link {
-    font-weight: 500;
-    font-size: 0.95rem;
-    padding: 0.8rem 1.2rem !important;
+    font-family: -apple-system, sans-serif; /* San-serif for UI elements */
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--soft-grey) !important;
     transition: var(--transition-smooth);
 }
 
@@ -61,59 +62,58 @@ body {
     color: var(--cyan-accent) !important;
 }
 
-/* 3. Hero Section */
-.hero-section {
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
-    background: radial-gradient(circle at top right, #f8fafc, #ffffff);
-    padding: 100px 0;
-}
-
+/* 4. HERO SECTION (Custom Breakpoints) */
 .text-gradient-custom {
-    background: linear-gradient(135deg, #00ced1 0%, #2ebf2e 100%);
+    background: linear-gradient(135deg, var(--cyan-accent) 0%, var(--green-accent) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
 
-h1.display-1, h1.display-2 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 800;
-    letter-spacing: -2.5px;
+h1.display-1 {
+    font-size: calc(3rem + 2vw); /* Fluid typography */
+    letter-spacing: -3px;
     line-height: 1.05;
 }
 
-/* 4. Portfolio Cards - Band 2: Consistent Component Design */
-.card {
-    border: none;
+@media (max-width: 768px) {
+    h1.display-1 { font-size: 3.5rem; }
+}
+
+/* 5. CUSTOM COMPONENT: THE ART CARD (Beyond Bootstrap) */
+.art-card {
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.05);
+    background: #ffffff;
+    padding: 12px; /* Physical "Matte" frame effect */
     transition: var(--transition-smooth);
-    border-radius: 16px;
+    border-radius: 2px; /* Sharper corners for frames */
 }
 
-.card:hover {
-    transform: translateY(-10px); /* Band 2: Layout interaction */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+.art-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-color: var(--cyan-accent);
 }
 
-.card-img-top {
-    transition: transform 0.6s ease;
+.art-card .card-img-top {
+    filter: grayscale(10%);
+    transition: filter 0.4s ease;
 }
 
-.card:hover .card-img-top {
-    transform: scale(1.05);
+.art-card:hover .card-img-top {
+    filter: grayscale(0%);
 }
 
-/* 5. Buttons & Interaction */
+/* 6. BUTTONS (Customized Defaults) */
 .btn {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    border-radius: 0; /* Boxy gallery style */
     text-transform: uppercase;
-    font-size: 0.8rem;
-    padding: 1rem 2.2rem;
-    border-radius: 100px; /* Modern pill shape */
+    letter-spacing: 2px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 1.2rem 2.5rem;
     transition: var(--transition-smooth);
 }
 
@@ -126,10 +126,20 @@ h1.display-1, h1.display-2 {
     background-color: var(--cyan-accent);
     color: var(--deep-black);
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 255, 255, 0.25);
 }
 
+/* 7. PAGE TRANSITION OVERLAY */
+.page-transition-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--deep-black);
+    z-index: 9999;
+    pointer-events: none;
+    transform: translateY(100%);
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
 
-/* 6. Utility Classes */
-.bg-soft-cyan { background-color: rgba(0, 255, 255, 0.1); }
-.tracking-tight { letter-spacing: -0.05em; }
+.is-transitioning .page-transition-overlay {
+    transform: translateY(0%);
+}
